@@ -1,5 +1,3 @@
-// @flow
-
 import MyMonth from './components/my-month.js';
 
 customElements.define('my-month', MyMonth);

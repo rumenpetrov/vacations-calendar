@@ -99,9 +99,6 @@ class MyMonth extends HTMLElement {
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    console.log('attributeChangedCallback');
-    console.log(name, oldValue, newValue);
-
     this[name] = newValue;
   }
 
@@ -121,17 +118,22 @@ class MyMonth extends HTMLElement {
   renderDay(day) {
     const vacationDays = this.data.vacation;
     const suggestionDays = this.data.suggestion;
+    let isVacantion = false;
+    let isSuggestion = false;
+    let cellClasses = '';
 
     if (day) {
-      if (vacationDays.includes(day) && suggestionDays.includes(day)) {
-        return `<td class="vacantion suggestion">${day}</td>`;
-      } else if (vacationDays.includes(day)) {
-        return `<td class="vacantion">${day}</td>`;
-      } else if (suggestionDays.includes(day)) {
-        return `<td class="suggestion">${day}</td>`;
-      }
+      isVacantion = vacationDays.includes(day);
+      isSuggestion = suggestionDays.includes(day);
+      cellClasses = `${isVacantion ? 'vacantion' : ''} ${isSuggestion ? 'suggestion' : ''}`;
 
-      return `<td>${day}</td>`;
+      return `
+        <td
+          class="${cellClasses}"
+        >
+          ${day}
+        </td>
+      `;
     }
 
     return '<td>&nbsp;</td>';
