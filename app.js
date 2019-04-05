@@ -1,15 +1,12 @@
 // @flow
 
 import MyMonth from './components/my-month.js';
-// import data1 from '/db/2019.json';
-
-// console.log(data1);
 
 customElements.define('my-month', MyMonth);
 
 const rootEl = document.getElementById('root');
 
-fetch('/db/2019.json')
+fetch('./db/2019.json')
   .then(response => response.json())
   .then((data) => {
     data.months.map((item) => {
