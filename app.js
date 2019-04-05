@@ -1,6 +1,9 @@
 // @flow
 
 import MyMonth from './components/my-month.js';
+// import data1 from '/db/2019.json';
+
+// console.log(data1);
 
 customElements.define('my-month', MyMonth);
 

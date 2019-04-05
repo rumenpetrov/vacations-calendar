@@ -4,7 +4,7 @@
   "description": "Calendar with all official vacation days.",
   "main": "index.js",
   "scripts": {
-    "start": "http-server ./public -p 3000",
+    "start": "http-server ./ -p 3000",
     "lint": "eslint"
   },
   "author": "Rumen Petrov",
