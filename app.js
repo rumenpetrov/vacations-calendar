@@ -1,6 +1,4 @@
-import MyMonth from './components/my-month.js';
-
-customElements.define('my-month', MyMonth);
+import './components/my-month.js';
 
 const rootEl = document.getElementById('root');
 

@@ -30,20 +30,24 @@ template.innerHTML = `
       border-spacing: 0;
       text-align: center;
     }
-    table tr {
+    table tr th {
+      border-bottom: 1px solid #909090;
+    }
+    table tr td {
       border-bottom: 1px solid #e9e9e9;
+    }
+    table tr:last-child td {
+      border-bottom: none;
     }
     table th,
     table td {
       padding: 6px;
       font-size: 14px;
     }
-    table th {
-      background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    }
+    table th {}
     table td:nth-last-child(2),
     table td:last-child {
-      background-color: #f5f7fa;
+      background-color: #edf2fb;
     }
     table td.suggestion {
       background-image: linear-gradient(225deg, #f5f7fa 0%, #c3cfe2 100%);
@@ -140,4 +144,4 @@ class MyMonth extends HTMLElement {
   }
 }
 
-export default MyMonth;
+window.customElements.define('my-month', MyMonth);
