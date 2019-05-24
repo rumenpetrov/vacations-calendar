@@ -2,20 +2,22 @@ import './components/my-holiday.js'
 
 const API_KEY = 'AIzaSyAs7jRn_U2YncuhCAgefwSaHyupybF5cF4'
 const CALENDAR_ID = encodeURIComponent('bg.bulgarian#holiday@group.v.calendar.google.com')
-const url = `https://www.googleapis.com/calendar/v3/calendars/${CALENDAR_ID}/events?key=${API_KEY}`
+const API = `https://www.googleapis.com/calendar/v3/calendars/${CALENDAR_ID}/events?key=${API_KEY}`
 const elRoot = document.getElementById('root')
 
-fetch(url)
+fetch(API)
   .then(response => response.json())
   .then(result => {
-    console.log(result)
-
     result.items.forEach(item => {
       if (item.start.date.includes('2019')) {
-        const elParagraph = document.createElement('p')
+        console.log(item)
 
-        elParagraph.textContent = `${item.start.date} - ${item.summary}`
-        elRoot.appendChild(elParagraph)
+        const elHoliday = document.createElement('my-holiday')
+
+        elHoliday.date = item.start.date
+        elHoliday.title = item.summary
+
+        elRoot.appendChild(elHoliday)
       }
     })
   })
