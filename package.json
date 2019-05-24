@@ -2,19 +2,28 @@
   "name": "vacations-calendar",
   "version": "1.0.0",
   "description": "Calendar with all official vacation days.",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "http-server ./ -p 3000",
+    "prestart": "npm i",
+    "start": "http-server ./ -p 8081",
     "lint": "eslint"
   },
   "author": "Rumen Petrov",
   "license": "ISC",
   "dependencies": {
-    "http-server": "^0.11.1"
+    "@ui5/webcomponents": "^0.11.0",
+    "@webcomponents/webcomponentsjs": "^2.2.10",
+    "wired-elements": "^1.0.0"
   },
   "devDependencies": {
-    "eslint": "^5.15.3",
+    "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.16.0"
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-html": "^5.0.5",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "http-server": "^0.11.1"
   }
 }

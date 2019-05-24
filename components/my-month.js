@@ -1,4 +1,4 @@
-const template = document.createElement('template');
+const template = document.createElement('template')
 
 template.innerHTML = `
   <style>
@@ -81,55 +81,55 @@ template.innerHTML = `
       </tbody>
     </table>
   </div>
-`;
+`
 
 class MyMonth extends HTMLElement {
-  constructor() {
-    super();
+  constructor () {
+    super()
 
-    this.attachShadow({ mode: 'open' });
-    this.shadowRoot.appendChild(template.content.cloneNode(true));
+    this.attachShadow({ mode: 'open' })
+    this.shadowRoot.appendChild(template.content.cloneNode(true))
   }
 
-  connectedCallback() {
-    this.$name = this.shadowRoot.querySelector('#name');
-    this.$weeks = this.shadowRoot.querySelector('#weeks');
+  connectedCallback () {
+    this.$name = this.shadowRoot.querySelector('#name')
+    this.$weeks = this.shadowRoot.querySelector('#weeks')
 
-    this.render(this);
+    this.render(this)
   }
 
-  static get observedAttributes() {
-    return ['name', 'weeks'];
+  static get observedAttributes () {
+    return ['name', 'weeks']
   }
 
-  attributeChangedCallback(name, oldValue, newValue) {
-    this[name] = newValue;
+  attributeChangedCallback (name, oldValue, newValue) {
+    this[name] = newValue
   }
 
-  render({ name, data }) {
-    this.$name.textContent = name || 'Not set';
-    this.$weeks.innerHTML = data.weeks.map(week => this.renderWeek(week)).join('');
+  render ({ name, data }) {
+    this.$name.textContent = name || 'Not set'
+    this.$weeks.innerHTML = data.weeks.map(week => this.renderWeek(week)).join('')
   }
 
-  renderWeek(week) {
+  renderWeek (week) {
     if (week) {
-      return `<tr>${week.map(day => this.renderDay(day)).join('')}</tr>`;
+      return `<tr>${week.map(day => this.renderDay(day)).join('')}</tr>`
     }
 
-    return '';
+    return ''
   }
 
-  renderDay(day) {
-    const vacationDays = this.data.vacation;
-    const suggestionDays = this.data.suggestion;
-    let isVacantion = false;
-    let isSuggestion = false;
-    let cellClasses = '';
+  renderDay (day) {
+    const vacationDays = this.data.vacation
+    const suggestionDays = this.data.suggestion
+    let isVacantion = false
+    let isSuggestion = false
+    let cellClasses = ''
 
     if (day) {
-      isVacantion = vacationDays.includes(day);
-      isSuggestion = suggestionDays.includes(day);
-      cellClasses = `${isVacantion ? 'vacantion' : ''} ${isSuggestion ? 'suggestion' : ''}`;
+      isVacantion = vacationDays.includes(day)
+      isSuggestion = suggestionDays.includes(day)
+      cellClasses = `${isVacantion ? 'vacantion' : ''} ${isSuggestion ? 'suggestion' : ''}`
 
       return `
         <td
@@ -137,11 +137,11 @@ class MyMonth extends HTMLElement {
         >
           ${day}
         </td>
-      `;
+      `
     }
 
-    return '<td>&nbsp;</td>';
+    return '<td>&nbsp;</td>'
   }
 }
 
-window.customElements.define('my-month', MyMonth);
+window.customElements.define('my-month', MyMonth)

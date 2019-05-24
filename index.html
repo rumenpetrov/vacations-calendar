@@ -5,10 +5,23 @@
   <title>Почивни дни</title>
 </head>
 <body>
+<div class="container">
   <h1>Почивни дни</h1>
 
-  <div id="root"></div>
+  <my-holiday>
+    <span slot="date">2019-01-12</span>
+    <span slot="title">The updated title</span>
+  </my-holiday>
 
-  <script src="./app.js" type="module"></script>
+  <wired-button>Click Me</wired-button>
+
+  <wired-card id="root" elevation="3"></wired-card>
+</div>
+
+<!-- load webcomponents bundle, which includes all the necessary polyfills -->
+<script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+<script src="node_modules/wired-elements/dist/wired-elements.bundled.js"></script>
+<!-- <script type="module" src="./node_modules/@ui5/webcomponents/dist/Button.js"></script> -->
+<script type="module" src="./app.js"></script>
 </body>
 </html>
