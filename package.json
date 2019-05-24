@@ -6,7 +6,7 @@
   "scripts": {
     "prestart": "npm i",
     "start": "http-server ./ -p 8081",
-    "lint": "eslint"
+    "lint": "eslint --ext .js,.html ."
   },
   "author": "Rumen Petrov",
   "license": "ISC",
