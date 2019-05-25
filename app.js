@@ -10,8 +10,6 @@ fetch(API)
   .then(result => {
     result.items.forEach(item => {
       if (item.start.date.includes('2019')) {
-        console.log(item)
-
         const elHoliday = document.createElement('my-holiday')
 
         elHoliday.date = item.start.date
