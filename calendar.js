@@ -59,11 +59,15 @@ const composeMonthData = (choosenMonth, choosenYear) => {
 }
 
 const renderMoth = (choosenMonth, choosenYear) => {
+  const captionData = ['Януари', 'Февруари', 'Март', 'Април', 'Май', 'Юни', 'Юли', 'Август', 'Септември', 'Октомври', 'Ноември', 'Декември']
   const tableHeadData = ['П', 'В', 'С', 'Ч', 'П', 'С', 'Н']
   const tableBodyData = composeMonthData(choosenMonth, choosenYear)
   const elTable = document.createElement('table')
+  const elCaption = document.createElement('caption')
   const elThead = document.createElement('thead')
   const elTbody = document.createElement('tbody')
+
+  elCaption.textContent = captionData[choosenMonth - 1]
 
   tableHeadData.map(itemValue => {
     const elCell = document.createElement('th')
@@ -87,6 +91,8 @@ const renderMoth = (choosenMonth, choosenYear) => {
     elTbody.appendChild(elWeek)
   })
 
+  elTable.appendChild(elCaption)
+  elTable.appendChild(elThead)
   elTable.appendChild(elThead)
   elTable.appendChild(elTbody)
 

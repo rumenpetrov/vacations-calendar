@@ -6,9 +6,9 @@ const API_KEY = 'AIzaSyAs7jRn_U2YncuhCAgefwSaHyupybF5cF4'
 const CALENDAR_ID = encodeURIComponent('bg.bulgarian#holiday@group.v.calendar.google.com')
 const API = `https://www.googleapis.com/calendar/v3/calendars/${CALENDAR_ID}/events?key=${API_KEY}`
 
+const choosenYear = new Date().getFullYear()
 const elHolidays = document.getElementById('js-holidays')
 const elCalendar = document.getElementById('js-calendar')
-const choosenYear = new Date().getFullYear()
 
 fetch(API)
   .then(response => response.json())
