@@ -1,3 +1,8 @@
+const CALENDAR = {
+  MONTHS: ['Януари', 'Февруари', 'Март', 'Април', 'Май', 'Юни', 'Юли', 'Август', 'Септември', 'Октомври', 'Ноември', 'Декември'],
+  DAYS: ['П', 'В', 'С', 'Ч', 'П', 'С', 'Н']
+}
+
 // 1 - Monday
 // 2 - Tuesday
 // 3 - Wednesday
@@ -58,9 +63,9 @@ const composeMonthData = (choosenMonth, choosenYear) => {
   return data
 }
 
-const renderMoth = (choosenMonth, choosenYear) => {
-  const captionData = ['Януари', 'Февруари', 'Март', 'Април', 'Май', 'Юни', 'Юли', 'Август', 'Септември', 'Октомври', 'Ноември', 'Декември']
-  const tableHeadData = ['П', 'В', 'С', 'Ч', 'П', 'С', 'Н']
+const renderMoth = (choosenMonth, choosenYear, vacantions) => {
+  const captionData = CALENDAR.MONTHS
+  const tableHeadData = CALENDAR.DAYS
   const tableBodyData = composeMonthData(choosenMonth, choosenYear)
   const elTable = document.createElement('table')
   const elCaption = document.createElement('caption')
@@ -84,6 +89,10 @@ const renderMoth = (choosenMonth, choosenYear) => {
       const elCell = document.createElement('td')
 
       elCell.textContent = day
+
+      if (vacantions.includes(day)) {
+        elCell.classList.add('vacantion')
+      }
 
       elWeek.appendChild(elCell)
     })
