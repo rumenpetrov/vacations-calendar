@@ -1,4 +1,11 @@
 const CALENDAR = {
+  API: {
+    ACCESS_KEY: 'AIzaSyAs7jRn_U2YncuhCAgefwSaHyupybF5cF4',
+    CALENDAR_ID: encodeURIComponent('bg.bulgarian#holiday@group.v.calendar.google.com'),
+    get URL () {
+      return `https://www.googleapis.com/calendar/v3/calendars/${this.CALENDAR_ID}/events?key=${this.ACCESS_KEY}`
+    }
+  },
   MONTHS: ['Януари', 'Февруари', 'Март', 'Април', 'Май', 'Юни', 'Юли', 'Август', 'Септември', 'Октомври', 'Ноември', 'Декември'],
   DAYS: ['П', 'В', 'С', 'Ч', 'П', 'С', 'Н']
 }
@@ -90,55 +97,9 @@ const composeMonthData = (choosenMonth, choosenYear, vacations) => {
   return data
 }
 
-const renderMoth = (choosenMonth, choosenYear, vacations) => {
-  const captionData = CALENDAR.MONTHS
-  const tableHeadData = CALENDAR.DAYS
-  const tableBodyData = composeMonthData(choosenMonth, choosenYear)
-  const elTable = document.createElement('table')
-  const elCaption = document.createElement('caption')
-  const elThead = document.createElement('thead')
-  const elTbody = document.createElement('tbody')
-
-  elCaption.textContent = captionData[choosenMonth - 1]
-
-  tableHeadData.map(itemValue => {
-    const elCell = document.createElement('th')
-
-    elCell.textContent = itemValue
-
-    elThead.appendChild(elCell)
-  })
-
-  tableBodyData.map(week => {
-    const elWeek = document.createElement('tr')
-
-    week.map(day => {
-      const elCell = document.createElement('td')
-
-      elCell.textContent = day
-
-      if (vacations.includes(day)) {
-        elCell.classList.add('vacation')
-      }
-
-      elWeek.appendChild(elCell)
-    })
-
-    elTbody.appendChild(elWeek)
-  })
-
-  elTable.appendChild(elCaption)
-  elTable.appendChild(elThead)
-  elTable.appendChild(elThead)
-  elTable.appendChild(elTbody)
-
-  return elTable
-}
-
 export {
   CALENDAR,
   getFirstDayOfMonthIndex,
   getTotalDaysInMonth,
-  composeMonthData,
-  renderMoth
+  composeMonthData
 }
