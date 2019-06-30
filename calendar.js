@@ -27,43 +27,70 @@ const getTotalDaysInMonth = (month, year) => {
   return 32 - new Date(year, month - 1, 32).getDate()
 }
 
-const composeMonthData = (choosenMonth, choosenYear) => {
+const composeMonthData = (choosenMonth, choosenYear, vacations) => {
   const firstDayIndex = getFirstDayOfMonthIndex(choosenMonth, choosenYear)
   const totalDays = getTotalDaysInMonth(choosenMonth, choosenYear)
   const data = [[], [], [], [], [], []]
 
   for (let i = 1; i < firstDayIndex; i++) {
-    data[0].push('-')
+    data[0].push({
+      value: 'preMonth',
+      vacations: []
+    })
   }
 
   for (let dayOfMonth = 1; dayOfMonth <= totalDays; dayOfMonth++) {
     if (data[0].length < 7) {
-      data[0].push(dayOfMonth)
+      data[0].push({
+        value: dayOfMonth,
+        vacation: vacations.includes(dayOfMonth)
+      })
     } else if (data[1].length < 7) {
-      data[1].push(dayOfMonth)
+      data[1].push({
+        value: dayOfMonth,
+        vacation: vacations.includes(dayOfMonth)
+      })
     } else if (data[2].length < 7) {
-      data[2].push(dayOfMonth)
+      data[2].push({
+        value: dayOfMonth,
+        vacation: vacations.includes(dayOfMonth)
+      })
     } else if (data[3].length < 7) {
-      data[3].push(dayOfMonth)
+      data[3].push({
+        value: dayOfMonth,
+        vacation: vacations.includes(dayOfMonth)
+      })
     } else if (data[4].length < 7) {
-      data[4].push(dayOfMonth)
+      data[4].push({
+        value: dayOfMonth,
+        vacation: vacations.includes(dayOfMonth)
+      })
     } else if (data[5].length < 7) {
-      data[5].push(dayOfMonth)
+      data[5].push({
+        value: dayOfMonth,
+        vacation: vacations.includes(dayOfMonth)
+      })
     }
   }
 
   while (data[4].length < 7) {
-    data[4].push('+')
+    data[4].push({
+      value: 'postMonth',
+      vacations: []
+    })
   }
 
   while (data[5].length < 7) {
-    data[5].push('+')
+    data[5].push({
+      value: 'postMonth',
+      vacations: []
+    })
   }
 
   return data
 }
 
-const renderMoth = (choosenMonth, choosenYear, vacantions) => {
+const renderMoth = (choosenMonth, choosenYear, vacations) => {
   const captionData = CALENDAR.MONTHS
   const tableHeadData = CALENDAR.DAYS
   const tableBodyData = composeMonthData(choosenMonth, choosenYear)
@@ -90,8 +117,8 @@ const renderMoth = (choosenMonth, choosenYear, vacantions) => {
 
       elCell.textContent = day
 
-      if (vacantions.includes(day)) {
-        elCell.classList.add('vacantion')
+      if (vacations.includes(day)) {
+        elCell.classList.add('vacation')
       }
 
       elWeek.appendChild(elCell)
@@ -109,6 +136,7 @@ const renderMoth = (choosenMonth, choosenYear, vacantions) => {
 }
 
 export {
+  CALENDAR,
   getFirstDayOfMonthIndex,
   getTotalDaysInMonth,
   composeMonthData,

@@ -7,7 +7,7 @@ template.innerHTML = `
       overflow: hidden;
       border-radius: 10px;
       padding: 10px;
-      margin: 20px;
+      margin-bottom: 20px;
       background-color: #f9f9f9;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
       transition: all 0.3s ease-in-out;
@@ -63,22 +63,16 @@ template.innerHTML = `
     <table>
       <thead>
         <tr>
-          <th>Пон</th>
-          <th>Вт</th>
-          <th>Ср</th>
-          <th>Че</th>
-          <th>Пет</th>
-          <th>Съб</th>
-          <th>Нед</th>
+          <th>П</th>
+          <th>В</th>
+          <th>С</th>
+          <th>Ч</th>
+          <th>П</th>
+          <th>С</th>
+          <th>Н</th>
         </tr>
       </thead>
-      <tbody id="weeks">
-        <tr id="week1"></tr>
-        <tr id="week2"></tr>
-        <tr id="week3"></tr>
-        <tr id="week4"></tr>
-        <tr id="week5"></tr>
-      </tbody>
+      <tbody id="weeks"></tbody>
     </table>
   </div>
 `
@@ -92,8 +86,8 @@ class MyMonth extends HTMLElement {
   }
 
   connectedCallback () {
-    this.$name = this.shadowRoot.querySelector('#name')
-    this.$weeks = this.shadowRoot.querySelector('#weeks')
+    this.elName = this.shadowRoot.querySelector('#name')
+    this.elWeeks = this.shadowRoot.querySelector('#weeks')
 
     this.render(this)
   }
@@ -106,41 +100,47 @@ class MyMonth extends HTMLElement {
     this[name] = newValue
   }
 
-  render ({ name, data }) {
-    this.$name.textContent = name || 'Not set'
-    this.$weeks.innerHTML = data.weeks.map(week => this.renderWeek(week)).join('')
+  render ({ name, weeks }) {
+    this.elName.textContent = name || 'Not set'
+    this.elWeeks.innerHTML = null
+
+    weeks.map(week => {
+      this.elWeeks.appendChild(this.renderWeek(week))
+    })
   }
 
   renderWeek (week) {
-    if (week) {
-      return `<tr>${week.map(day => this.renderDay(day)).join('')}</tr>`
+    if (!week) {
+      return null
     }
 
-    return ''
+    const elRow = document.createElement('tr')
+
+    week.map(day => {
+      elRow.appendChild(this.renderDay(day))
+    })
+
+    return elRow
   }
 
   renderDay (day) {
-    const vacationDays = this.data.vacation
-    const suggestionDays = this.data.suggestion
-    let isVacantion = false
-    let isSuggestion = false
-    let cellClasses = ''
+    const elCell = document.createElement('td')
 
-    if (day) {
-      isVacantion = vacationDays.includes(day)
-      isSuggestion = suggestionDays.includes(day)
-      cellClasses = `${isVacantion ? 'vacantion' : ''} ${isSuggestion ? 'suggestion' : ''}`
+    console.log(day)
 
-      return `
-        <td
-          class="${cellClasses}"
-        >
-          ${day}
-        </td>
-      `
+    if (day.value === 'preMonth') {
+      elCell.textContent = 'x'
+    } else if (day.value === 'postMonth') {
+      elCell.textContent = 'x'
+    } else {
+      elCell.textContent = day.value
+
+      if (day.vacation) {
+        elCell.classList.add('vacantion')
+      }
     }
 
-    return '<td>&nbsp;</td>'
+    return elCell
   }
 }
 

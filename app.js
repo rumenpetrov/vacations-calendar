@@ -1,6 +1,7 @@
 import './components/my-holiday.js'
+import './components/my-month.js'
 
-import { renderMoth } from './calendar.js'
+import { composeMonthData, CALENDAR } from './calendar.js'
 
 const API_KEY = 'AIzaSyAs7jRn_U2YncuhCAgefwSaHyupybF5cF4'
 const CALENDAR_ID = encodeURIComponent('bg.bulgarian#holiday@group.v.calendar.google.com')
@@ -13,7 +14,7 @@ const elCalendar = document.getElementById('js-calendar')
 fetch(API)
   .then(response => response.json())
   .then(result => {
-    const vacantionDaysInMonth = [
+    const vacationDaysInMonth = [
       [],
       [],
       [],
@@ -40,12 +41,18 @@ fetch(API)
         const currentMonth = parseInt(item.start.date.substring(5, 7), 10)
         const currentDay = parseInt(item.start.date.substring(8, 10), 10)
 
-        vacantionDaysInMonth[currentMonth - 1].push(currentDay)
+        vacationDaysInMonth[currentMonth - 1].push(currentDay)
       }
     })
 
     for (var month = 1; month <= 12; month++) {
-      elCalendar.appendChild(renderMoth(month, choosenYear, vacantionDaysInMonth[month - 1]))
+      // elCalendar.appendChild(renderMoth(month, choosenYear, vacationDaysInMonth[month - 1]))
+      const elMonth = document.createElement('my-month')
+
+      elMonth.name = CALENDAR.MONTHS[month - 1]
+      elMonth.weeks = composeMonthData(month, choosenYear, vacationDaysInMonth[month - 1])
+
+      elCalendar.appendChild(elMonth)
     }
   })
   .catch(err => {
