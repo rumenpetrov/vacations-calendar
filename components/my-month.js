@@ -17,50 +17,66 @@ template.innerHTML = `
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
 
-    h6 {
-      margin: 0 0 10px;
-      font-size: 16px;
-      line-height: 1.2;
-      font-weight: normal;
-    }
-
     table {
       width: 100%;
       border-collapse: collapse;
       border-spacing: 0;
       text-align: center;
     }
+
+    table caption {
+      margin: 0 0 10px;
+      font-size: 16px;
+      line-height: 1.2;
+      font-weight: normal;
+      text-align: center;
+    }
+
     table tr th {
       border-bottom: 1px solid #909090;
+      font-weight: normal;
     }
+
     table tr td {
       border-bottom: 1px solid #e9e9e9;
     }
+
     table tr:last-child td {
       border-bottom: none;
     }
+
     table th,
     table td {
       padding: 6px;
       font-size: 14px;
     }
+
     table th {}
+
     table td:nth-last-child(2),
+
     table td:last-child {
       background-color: #edf2fb;
     }
+
     table td.suggestion {
       background-image: linear-gradient(225deg, #f5f7fa 0%, #c3cfe2 100%);
     }
+
     table td.vacantion {
       background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+    }
+
+    table td.pre-month,
+    table td.post-month {
+      color: #aaa
     }
   </style>
 
   <div class="root">
-    <h6 id="name">Month name</h6>
 
     <table>
+      <caption id="name">Month name</caption>
       <thead>
         <tr>
           <th>П</th>
@@ -77,41 +93,39 @@ template.innerHTML = `
   </div>
 `
 
+// TODO:
+// - Split into smaller components
+// - Split weeks prop into simpler props
+// - Reflect props into attributes and add getters and setters for them
 class MyMonth extends HTMLElement {
   constructor () {
     super()
 
     this.attachShadow({ mode: 'open' })
     this.shadowRoot.appendChild(template.content.cloneNode(true))
+
+    this.elName = this.shadowRoot.querySelector('#name')
+    this.elWeeks = this.shadowRoot.querySelector('#weeks')
   }
 
   connectedCallback () {
-    this.elName = this.shadowRoot.querySelector('#name')
-    this.elWeeks = this.shadowRoot.querySelector('#weeks')
-
     this.render(this)
-  }
-
-  static get observedAttributes () {
-    return ['name', 'weeks']
-  }
-
-  attributeChangedCallback (name, oldValue, newValue) {
-    this[name] = newValue
   }
 
   render ({ name, weeks }) {
     this.elName.textContent = name || 'Not set'
     this.elWeeks.innerHTML = null
 
-    weeks.map(week => {
-      this.elWeeks.appendChild(this.renderWeek(week))
-    })
+    if (weeks) {
+      weeks.map(week => {
+        this.elWeeks.appendChild(this.renderWeek(week))
+      })
+    }
   }
 
   renderWeek (week) {
     if (!week) {
-      return null
+      return false
     }
 
     const elRow = document.createElement('tr')
@@ -126,12 +140,12 @@ class MyMonth extends HTMLElement {
   renderDay (day) {
     const elCell = document.createElement('td')
 
-    console.log(day)
-
     if (day.value === 'preMonth') {
       elCell.textContent = 'x'
+      elCell.classList.add('pre-month')
     } else if (day.value === 'postMonth') {
       elCell.textContent = 'x'
+      elCell.classList.add('post-month')
     } else {
       elCell.textContent = day.value
 

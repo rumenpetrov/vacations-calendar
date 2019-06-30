@@ -4,11 +4,12 @@ template.innerHTML = `
   <style>
     .root {
       display: block;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-      padding: 6px;
-      margin-bottom: 3px;
+      overflow: hidden;
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 10px;
       background-color: #f9f9f9;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     }
   </style>
 
@@ -63,8 +64,8 @@ class MyHoliday extends HTMLElement {
   }
 
   render ({ date, title }) {
-    this.elDate.textContent = date
-    this.elTitle.textContent = title
+    this.elDate.textContent = date || 'XXXX-XX-XX'
+    this.elTitle.textContent = title || 'Not set'
   }
 }
 
