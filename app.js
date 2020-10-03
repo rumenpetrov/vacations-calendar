@@ -1,7 +1,7 @@
 import './components/my-holiday.js'
 import './components/my-month.js'
 
-import { composeMonthData, CALENDAR } from './calendar.js'
+import { composeMonthData, CALENDAR } from './utils/calendar.js'
 
 const choosenYear = new Date().getFullYear()
 const elHolidays = document.getElementById('js-holidays')

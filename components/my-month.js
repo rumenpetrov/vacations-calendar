@@ -74,7 +74,6 @@ template.innerHTML = `
   </style>
 
   <div class="root">
-
     <table>
       <caption id="name">Month name</caption>
       <thead>
