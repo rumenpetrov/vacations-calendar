@@ -6,22 +6,20 @@
   "scripts": {
     "prestart": "npm i",
     "start": "http-server ./ -p 8081",
-    "lint": "eslint --ext .js,.html ."
+    "lint": "eslint --ext .js ."
   },
   "author": "Rumen Petrov",
   "license": "ISC",
   "dependencies": {
-    "@webcomponents/webcomponentsjs": "^2.2.10"
+    "@webcomponents/webcomponentsjs": "2.2.10"
   },
   "devDependencies": {
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-html": "^5.0.5",
-    "eslint-plugin-import": "^2.17.2",
-    "eslint-plugin-node": "^9.1.0",
-    "eslint-plugin-promise": "^4.1.1",
-    "eslint-plugin-standard": "^4.0.0",
-    "http-server": "^0.11.1"
+    "eslint": "^7.10.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "http-server": "0.12.3"
   }
 }
