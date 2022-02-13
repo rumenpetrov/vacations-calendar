@@ -41,7 +41,7 @@ fetch(CALENDAR.API.URL)
       }
     })
 
-    for (var month = 1; month <= 12; month++) {
+    for (let month = 1; month <= 12; month++) {
       const elMonth = document.createElement('my-month')
 
       elMonth.name = CALENDAR.MONTHS[month - 1]

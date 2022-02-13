@@ -116,7 +116,7 @@ class MyMonth extends HTMLElement {
     this.elWeeks.innerHTML = null
 
     if (weeks) {
-      weeks.map(week => {
+      weeks.forEach(week => {
         this.elWeeks.appendChild(this.renderWeek(week))
       })
     }
@@ -129,7 +129,7 @@ class MyMonth extends HTMLElement {
 
     const elRow = document.createElement('tr')
 
-    week.map(day => {
+    week.forEach(day => {
       elRow.appendChild(this.renderDay(day))
     })
 
