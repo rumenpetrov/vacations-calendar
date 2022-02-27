@@ -1,6 +1,8 @@
 const CALENDAR = {
   API: {
-    ACCESS_KEY: process.env.CALENDAR_ID,
+    // TODO:
+    // - Replace with env variable when available
+    ACCESS_KEY: 'AIzaSyAs7jRn_U2YncuhCAgefwSaHyupybF5cF4',
     CALENDAR_ID: encodeURIComponent('bg.bulgarian#holiday@group.v.calendar.google.com'),
     get URL () {
       return `https://www.googleapis.com/calendar/v3/calendars/${this.CALENDAR_ID}/events?key=${this.ACCESS_KEY}`
