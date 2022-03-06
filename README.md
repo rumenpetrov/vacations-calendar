@@ -1,12 +1,12 @@
 # vacations-calendar
-Calendar with all vacation days in the year for Bulgaria, using vanilla JS web components.
+Calendar with all vacation days in the year for Bulgaria, using web components.
 
 ### Status
 This project is still in development phase.
 
 #### Project requirements
-- Vanilla JS
 - [Web components](https://developer.mozilla.org/en-US/docs/Web/Web_Components)
+- [Static Site Generation(SSG)](https://stenciljs.com/docs/static-site-generation) using Stencil
 - CI - Automated test and quality tools runs before merging to main code-base
 - CD - Automated build and deploy process
 
