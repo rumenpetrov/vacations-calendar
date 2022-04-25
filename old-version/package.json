@@ -1,25 +1,22 @@
 {
   "name": "vacations-calendar",
-  "version": "1.0.0",
-  "description": "Calendar with all official vacation days.",
-  "main": "app.js",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Stencil App Starter",
   "scripts": {
-    "prestart": "npm i",
-    "start": "http-server ./ -p 8081",
-    "eslint:check": "eslint --ext .js .",
-    "eslint:fix": "eslint --ext .js . --fix"
-  },
-  "author": "Rumen Petrov",
-  "license": "ISC",
-  "dependencies": {
-    "@webcomponents/webcomponentsjs": "^2.6.0"
+    "build": "stencil build",
+    "start": "stencil build --dev --watch --serve",
+    "test": "stencil test --spec --e2e",
+    "test.watch": "stencil test --spec --e2e --watchAll",
+    "generate": "stencil generate"
   },
   "devDependencies": {
-    "eslint": "^7.32.0",
-    "eslint-config-standard": "^16.0.3",
-    "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.2.0",
-    "http-server": "^14.1.0"
-  }
+    "@stencil/core": "2.13.0",
+    "@stencil/router": "^1.0.1",
+    "@types/jest": "^27.0.3",
+    "jest": "^27.4.5",
+    "jest-cli": "^27.4.5",
+    "puppeteer": "^10.0.0"
+  },
+  "license": "MIT"
 }
