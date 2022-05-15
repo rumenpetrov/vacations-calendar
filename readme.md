@@ -1,3 +1,5 @@
+> The next version of the project is currently under development. Switch to the master branch to check the existing POC application.
+
 # Stencil App Starter
 
 Stencil is a compiler for building fast web apps using Web Components.
