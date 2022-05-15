@@ -31,9 +31,9 @@ jobs:
     - name: Create docs folder
       run: mkdir docs/
       shell: bash
-    - name: Move built site to docs
-      run: mv www/* docs/
+    - name: Move built site to root
+      run: mv www/* .
       shell: bash
-    - name: List docs folder content
-      run: ls -la docs/
+    - name: List root folder content
+      run: ls -la
       shell: bash
