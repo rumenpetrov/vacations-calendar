@@ -27,6 +27,10 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
 
+    - name: Setup ENV variables
+      env:
+        BASE_PATH: ${{ secrets.BASE_PATH }}
+
     - name: Install and Build
       run: |
         npm ci

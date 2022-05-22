@@ -7,6 +7,8 @@ import { Component, h } from '@stencil/core';
 })
 export class AppRoot {
   render() {
+    console.log('BASE_PATH: ', process.env.BASE_PATH);
+
     return (
       <div>
         <header>
