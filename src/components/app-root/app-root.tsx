@@ -10,7 +10,7 @@ export class AppRoot {
     console.log('BASE_PATH: ', process.env.BASE_PATH);
     console.log('CALENDAR_ID: ', process.env.CALENDAR_ID);
     console.log('GH RR_TEST: ', process.env.RR_TEST);
-    console.log('CI_TEST: ', process.env.RR_TEST);
+    console.log('CI_TEST: ', process.env.CI_TEST);
 
     return (
       <div>
