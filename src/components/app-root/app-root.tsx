@@ -1,22 +1,23 @@
-import { Component, h } from '@stencil/core';
+import { Component, h, /*getAssetPath*/ } from '@stencil/core';
 
 @Component({
   tag: 'app-root',
   styleUrl: 'app-root.css',
   shadow: true,
+  // assetsDirs: ['assets'],
 })
 export class AppRoot {
   render() {
+    console.log(process.env.BASE_PATH);
+    console.log(process.env.CALENDAR_ID);
+
     return (
       <div>
         <header>
           <h1>Hello Stencil App Starter</h1>
         </header>
 
-        <ul>
-          <li>{process.env.BASE_PATH}</li>
-          <li>{process.env.CALENDAR_ID}</li>
-        </ul>
+        {/*<img src={getAssetPath('assets/icon/icon.png')} alt="icon" />*/}
 
         <main>
           <stencil-router>

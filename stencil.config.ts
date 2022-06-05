@@ -17,6 +17,13 @@ export const config: Config = {
       baseUrl: `https://rumenpetrov.github.io`,
       resourcesUrl: `https://rumenpetrov.github.io/vacations-calendar`,
       prerenderConfig: './prerender.config.ts',
+      // copy: [
+      //   {
+      //     src: '**/*.{jpg,png}',
+      //     dest: 'dist/components/assets',
+      //     warn: true,
+      //   }
+      // ],
     },
   ],
   plugins: [
