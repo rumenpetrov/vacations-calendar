@@ -7,16 +7,18 @@ import { Component, h } from '@stencil/core';
 })
 export class AppRoot {
   render() {
-    console.log('BASE_PATH: ', process.env.BASE_PATH);
-    console.log('CALENDAR_ID: ', process.env.CALENDAR_ID);
-    console.log('GH RR_TEST: ', process.env.RR_TEST);
-    console.log('CI_TEST: ', process.env.CI_TEST);
-
     return (
       <div>
         <header>
           <h1>Hello Stencil App Starter</h1>
         </header>
+
+        <ul>
+          <li>{process.env.CI_TEST}</li>
+          <li>{process.env.BASE_PATH}</li>
+          <li>{process.env.CALENDAR_ID}</li>
+          <li>{process.env.RR_TEST}</li>
+        </ul>
 
         <main>
           <stencil-router>
