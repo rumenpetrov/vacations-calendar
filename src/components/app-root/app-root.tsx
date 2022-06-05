@@ -7,9 +7,10 @@ import { Component, h } from '@stencil/core';
 })
 export class AppRoot {
   render() {
-    if (typeof process === 'object') {
-      console.log('ENV: ', process.env);
-    }
+    console.log('BASE_PATH: ', process.env.BASE_PATH);
+    console.log('CALENDAR_ID: ', process.env.CALENDAR_ID);
+    console.log('GH RR_TEST: ', process.env.RR_TEST);
+    console.log('CI_TEST: ', process.env.RR_TEST);
 
     return (
       <div>

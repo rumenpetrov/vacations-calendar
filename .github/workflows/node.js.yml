@@ -34,6 +34,8 @@ jobs:
         touch ./www/.nojekyll
       env:
         BASE_PATH: ${{ secrets.BASE_PATH }}
+        CALENDAR_ID: ${{ secrets.CALENDAR_ID }}
+        CI_TEST: 2222
 
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4.3.3

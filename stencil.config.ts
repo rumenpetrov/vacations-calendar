@@ -1,4 +1,5 @@
 import { Config } from '@stencil/core';
+import dotenvPlugin from 'rollup-plugin-dotenv';
 
 // https://stenciljs.com/docs/config
 
@@ -11,8 +12,11 @@ export const config: Config = {
       type: 'www',
       // comment the following line to disable service workers in production
       serviceWorker: null,
-      baseUrl: `${process.env.BASE_PATH}`,
-      resourcesUrl: `${process.env.BASE_PATH}`,
+      baseUrl: process.env.BASE_PATH,
+      resourcesUrl: process.env.BASE_PATH,
     },
   ],
+  plugins: [
+    dotenvPlugin()
+  ]
 };
