@@ -12,8 +12,6 @@ on:
 env:
   BASE_PATH: ${{ secrets.BASE_PATH }}
   CALENDAR_ID: ${{ secrets.CALENDAR_ID }}
-  RR_TEST: ${{ secrets.RR_TEST }}
-  CI_TEST: ${{ secrets.CI_TEST }}
 
 jobs:
   build:
@@ -34,11 +32,12 @@ jobs:
 
     - name: Install and Build
       run: |
-        touch ./www/.nojekyll
-        touch .env
-        echo CI_TEST=${{ secrets.CI_TEST }} >> .env
         npm ci
         npm run build --if-present
+        touch ./www/.nojekyll
+        touch .env
+        echo BASE_PATH=${{ secrets.BASE_PATH }} >> .env
+        echo CALENDAR_ID=${{ secrets.CALENDAR_ID }} >> .env
 
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4.3.3

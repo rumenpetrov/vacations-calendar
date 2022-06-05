@@ -14,10 +14,8 @@ export class AppRoot {
         </header>
 
         <ul>
-          <li>{process.env.CI_TEST}</li>
           <li>{process.env.BASE_PATH}</li>
           <li>{process.env.CALENDAR_ID}</li>
-          <li>{process.env.RR_TEST}</li>
         </ul>
 
         <main>
