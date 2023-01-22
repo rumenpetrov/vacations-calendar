@@ -21,8 +21,6 @@ export const config: Config = {
       // resourcesUrl: `https://${process.env.BASE_PATH}`,
       // baseUrl: `https://rumenpetrov.github.io/vacations-calendar/`,
       // resourcesUrl: `https://rumenpetrov.github.io/vacations-calendar/`,
-      baseUrl: `/vacations-calendar/`,
-      resourcesUrl: `/vacations-calendar/`,
       // prerenderConfig: './prerender.config.ts',
       // copy: [
       //   {
