@@ -26,52 +26,48 @@ self.addEventListener('message', (event) => {
  */
 self.__precacheManifest = [
   {
-    "url": "index-org.html",
-    "revision": "44733f9b526d26a96b2cc8c92d8da69f"
-  },
-  {
     "url": "index.html",
-    "revision": "44733f9b526d26a96b2cc8c92d8da69f"
+    "revision": "b962badc5e5375f150fce574401ac58a"
   },
   {
     "url": "build/index.esm.js",
     "revision": "d41d8cd98f00b204e9800998ecf8427e"
   },
   {
-    "url": "build/p-354e18d4.entry.js"
+    "url": "build/p-059c7bd8.entry.js"
   },
   {
-    "url": "build/p-4ee1bf76.entry.js"
+    "url": "build/p-2968d1ce.js"
   },
   {
-    "url": "build/p-52727c09.entry.js"
+    "url": "build/p-4a094bff.entry.js"
   },
   {
-    "url": "build/p-64a09963.entry.js"
+    "url": "build/p-590dbd47.entry.js"
   },
   {
-    "url": "build/p-6686e54f.js"
+    "url": "build/p-5e54def4.entry.js"
   },
   {
-    "url": "build/p-72b2d6d9.entry.js"
+    "url": "build/p-7a398b4c.js"
   },
   {
-    "url": "build/p-8c90ff58.entry.js"
-  },
-  {
-    "url": "build/p-92805477.entry.js"
+    "url": "build/p-8b76ffef.entry.js"
   },
   {
     "url": "build/p-9b6a9315.js"
   },
   {
-    "url": "build/p-b7cfa215.js"
+    "url": "build/p-ba478914.entry.js"
   },
   {
-    "url": "build/p-cc76a218.entry.js"
+    "url": "build/p-cacc7d1d.entry.js"
   },
   {
-    "url": "build/p-f5805464.entry.js"
+    "url": "build/p-e6ab75ee.entry.js"
+  },
+  {
+    "url": "build/p-f2f26741.entry.js"
   },
   {
     "url": "manifest.json",
