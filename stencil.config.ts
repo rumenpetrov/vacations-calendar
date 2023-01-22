@@ -17,11 +17,13 @@ export const config: Config = {
       type: 'www',
       // comment the following line to disable service workers in production
       // serviceWorker: null,
-      baseUrl: `https://${process.env.BASE_PATH}`,
-      resourcesUrl: `https://${process.env.BASE_PATH}`,
+      // baseUrl: `https://${process.env.BASE_PATH}`,
+      // resourcesUrl: `https://${process.env.BASE_PATH}`,
       // baseUrl: `https://rumenpetrov.github.io/vacations-calendar/`,
       // resourcesUrl: `https://rumenpetrov.github.io/vacations-calendar/`,
-      prerenderConfig: './prerender.config.ts',
+      baseUrl: `/vacations-calendar/`,
+      resourcesUrl: `/vacations-calendar/`,
+      // prerenderConfig: './prerender.config.ts',
       // copy: [
       //   {
       //     src: '**/*.{jpg,png}',
