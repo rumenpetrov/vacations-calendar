@@ -13,8 +13,12 @@ env:
   BASE_PATH: ${{ secrets.BASE_PATH }}
   CALENDAR_ID: ${{ secrets.CALENDAR_ID }}
 
+permissions:
+  contents: write
+
 jobs:
-  build:
+  build-and-deploy:
+    concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
     runs-on: ubuntu-latest
 
     strategy:
@@ -37,7 +41,7 @@ jobs:
         touch ./www/.nojekyll
 
     - name: Deploy 🚀
-      uses: JamesIves/github-pages-deploy-action@v4.3.3
+      uses: JamesIves/github-pages-deploy-action@v4
       with:
         branch: gh-pages # The branch the action should deploy to.
         folder: www # The folder the action should deploy.

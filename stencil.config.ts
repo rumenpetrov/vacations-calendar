@@ -19,8 +19,8 @@ export const config: Config = {
       // serviceWorker: null,
       baseUrl: `https://${process.env.BASE_PATH}`,
       resourcesUrl: `https://${process.env.BASE_PATH}`,
-      // baseUrl: `https://rumenpetrov.github.io/vacations-calendar`,
-      // resourcesUrl: `https://rumenpetrov.github.io/vacations-calendar`,
+      // baseUrl: `https://rumenpetrov.github.io/vacations-calendar/`,
+      // resourcesUrl: `https://rumenpetrov.github.io/vacations-calendar/`,
       prerenderConfig: './prerender.config.ts',
       // copy: [
       //   {
